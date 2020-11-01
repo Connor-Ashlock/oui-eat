@@ -1,13 +1,24 @@
 import React from 'react';
 import MenuItem from './menu-item';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 class MenuList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { menu: [], isFavorited: false };
     this.getMenuItems = this.getMenuItems.bind(this);
     this.handleBackClick = this.handleBackClick.bind(this);
     this.handleHeartClick = this.handleHeartClick.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.state = { menu: [], isFavorited: false, modalIsOpen: false };
+  }
+
+  openModal() {
+    this.setState({ modalIsOpen: true });
+    setTimeout(() => {
+      this.setState({ modalIsOpen: false });
+    }, 2500);
   }
 
   getMenuItems() {
@@ -62,6 +73,13 @@ class MenuList extends React.Component {
   render() {
     return (
       <>
+        <Modal isOpen={this.state.modalIsOpen}
+          className="added"
+          style={{ overlay: { backgroundColor: 'rgba(255, 255, 255, 0)' } }}
+          closeTimeoutMS={1000}
+        >
+          <div className="modal1 p-2 rounded">Item added to cart</div>
+        </Modal>
         <div
           className="col-12 text-muted font-weight-light mb-2 back mt-5 pl-0"
           onClick={this.handleBackClick}
@@ -111,6 +129,7 @@ class MenuList extends React.Component {
               key={menuItem.menuItemId}
               menuItem={menuItem}
               addToCart={this.props.addToCart}
+              openModal={this.openModal}
             />
           ))}
         </div>

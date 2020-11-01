@@ -8,6 +8,7 @@ class MenuItem extends React.Component {
 
   handleAddToCart(event) {
     this.props.addToCart(this.props.menuItem);
+    this.props.openModal();
   }
 
   render() {

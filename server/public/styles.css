@@ -70,3 +70,23 @@ header {
   color: white;
   background: #45433E;
 }
+
+.added {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 1000ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+}
