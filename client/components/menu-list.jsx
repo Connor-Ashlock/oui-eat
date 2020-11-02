@@ -18,7 +18,7 @@ class MenuList extends React.Component {
     this.setState({ modalIsOpen: true });
     setTimeout(() => {
       this.setState({ modalIsOpen: false });
-    }, 2500);
+    }, 2000);
   }
 
   getMenuItems() {
